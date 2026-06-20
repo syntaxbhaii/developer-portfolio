@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} | Sushree Debanshi Sahoo{% endblock %}
+
+{% block content %}
+<section class="py-5" style="margin-top: 80px; min-height: 100vh;">
+    <div class="container" data-aos="fade-up">
+        
+        <a href="/" class="btn btn-outline-secondary btn-sm rounded-pill mb-4 px-3" style="border-color: rgba(255,255,255,0.1); color: #a1a1aa;">
+            <i class="fas fa-arrow-left me-2"></i> Back to Home
+        </a>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <p class="text-primary fw-semibold mb-2">{{ post.created_at|date:"F d, Y" }}</p>
+                <h1 class="display-4 fw-bold text-white mb-4">{{ post.title }}</h1>
+
+                {% if post.thumbnail %}
+                <div class="rounded-4 overflow-hidden mb-5 glass-panel" style="max-height: 400px; padding: 5px;">
+                    <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}" class="w-100 h-100 rounded-3" style="object-fit: cover;">
+                </div>
+                {% endif %}
+
+                <div class="glass-panel p-4 p-md-5 text-white-50 fs-5 lh-lg" style="border-radius: 16px;">
+                    {{ post.content|linebreaks }}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

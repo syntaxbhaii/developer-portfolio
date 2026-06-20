@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="min-vh-100 d-flex align-items-center justify-content-center text-center">
+    <div class="container glass-panel p-5" >
+        <h1 class="display-3 fw-bold mb-3">Hey, I'm <span class="text-primary">Biswa</span>.</h1>
+        <h2 class="h3 mb-4 text-secondary"><span id="typed-text"></span></h2>
+        <a href="#projects" class="btn btn-primary btn-lg rounded-pill px-4 py-2">View My Work</a>
+    </div>
+</section>
+
+<section id="about" class="py-5" style="margin-top: 80px;">
+    <div class="container" data-aos="fade-up">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="glass-panel p-2 rounded-4 position-relative">
+                    <div style="height: 400px; background: rgba(59, 130, 246, 0.1); border-radius: 12px;" class="d-flex align-items-center justify-content-center">
+                        <i class="fas fa-code fa-5x text-primary" style="opacity: 0.5;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 ps-lg-5">
+                <h2 class="fw-bold mb-4 display-6">About <span class="text-primary">Me</span></h2>
+                <p class="text-white-50 lh-lg fs-5">
+                    I am a highly motivated 2nd-year B.Tech student with a strong foundation in hardware description languages and object-oriented programming. 
+                </p>
+                <p class="text-white-50 lh-lg fs-5 mb-5">
+                    My focus lies in building efficient, scalable software and understanding the deep technical stack from VHDL circuit logic up to modern Django web applications. I thrive on solving complex problems and designing elegant, user-centric solutions.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-lg rounded-pill px-4 border-2 fw-semibold">
+                    Download Resume <i class="fas fa-download ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="py-5 bg-black bg-opacity-25" style="margin-top: 80px; padding-bottom: 100px;">
+    <div class="container" data-aos="fade-up">
+        <div class="text-center mb-5 pb-3">
+            <h2 class="fw-bold display-6">Technical <span class="text-primary">Arsenal</span></h2>
+            <p class="text-white-50 fs-5">Technologies and tools I build with</p>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="glass-panel p-4 text-center tilt-card" style="cursor: pointer;">
+                    <i class="fab fa-python fa-3x text-warning mb-3"></i>
+                    <h5 class="fw-bold m-0 text-white">Python</h5>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="glass-panel p-4 text-center tilt-card" style="cursor: pointer;">
+                    <i class="fas fa-leaf fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold m-0 text-white">Django</h5>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="glass-panel p-4 text-center tilt-card" style="cursor: pointer;">
+                    <i class="fab fa-java fa-3x text-danger mb-3"></i>
+                    <h5 class="fw-bold m-0 text-white">Java</h5>
+                </div>
+            </div>
+            
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="glass-panel p-4 text-center tilt-card" style="cursor: pointer;">
+                    <i class="fas fa-microchip fa-3x text-info mb-3"></i>
+                    <h5 class="fw-bold m-0 text-white">VHDL</h5>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="py-5" style="margin-top: 80px; padding-bottom: 100px;">
+    <div class="container" data-aos="fade-up">
+        <div class="text-center mb-5 pb-3">
+            <h2 class="fw-bold display-6">Featured <span class="text-primary">Work</span></h2>
+            <p class="text-white-50 fs-5">Some of my recent builds and experiments</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4">
+                <div class="glass-panel h-100 overflow-hidden" style="border-radius: 16px;">
+                    <div style="height: 200px; overflow: hidden;">
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-100 h-100" style="object-fit: cover; transition: transform 0.3s ease;">
+                        {% else %}
+                            <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
+                                <i class="fas fa-image fa-3x text-white-50"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="p-4">
+                        <h4 class="fw-bold text-white mb-2">{{ project.title }}</h4>
+                        <p class="text-primary fw-medium small mb-3">{{ project.technologies }}</p>
+                        <p class="text-white-50 small mb-4" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                            {{ project.description }}
+                        </p>
+                        
+                        <div class="d-flex gap-2">
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-light btn-sm rounded-pill px-3">
+                                <i class="fab fa-github me-1"></i> Code
+                            </a>
+                            {% endif %}
+                            
+                            {% if project.live_url %}
+                            <a href="{{ project.live_url }}" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3">
+                                <i class="fas fa-external-link-alt me-1"></i> Live
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center text-white-50 py-5">
+                <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                <h5>No projects uploaded yet.</h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="blog" class="py-5 bg-black bg-opacity-25" style="padding-top: 100px; padding-bottom: 100px;">
+    <div class="container" data-aos="fade-up">
+        <div class="text-center mb-5 pb-3">
+            <h2 class="fw-bold display-6">Tech <span class="text-primary">Insights</span></h2>
+            <p class="text-white-50 fs-5">My thoughts on software engineering and development</p>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            {% for post in blogs %}
+            <div class="col-md-6 col-lg-4">
+                <div class="glass-panel h-100 overflow-hidden d-flex flex-column" style="border-radius: 16px; transition: transform 0.3s ease;">
+                    
+                    <div style="height: 200px; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        {% if post.thumbnail %}
+                            <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}" class="w-100 h-100" style="object-fit: cover;">
+                        {% else %}
+                            <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
+                                <i class="fas fa-file-alt fa-3x text-white-50"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+                        <p class="text-primary small fw-semibold mb-2">{{ post.created_at|date:"M d, Y" }}</p>
+                        <h5 class="fw-bold text-white mb-3">{{ post.title }}</h5>
+                        
+                        <p class="text-white-50 small mb-4 flex-grow-1">
+                            {{ post.content|truncatewords:15 }}
+                        </p>
+                        
+                        <a href="{% url 'blog:post_detail' post.slug %}" class="btn btn-outline-light btn-sm rounded-pill align-self-start px-3">
+                            Read Article <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center text-white-50 py-5">
+                <i class="fas fa-pen-nib fa-3x mb-3 text-secondary"></i>
+                <h5>Publishing my first article soon.</h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5" style="margin-top: 50px; padding-bottom: 100px;">
+    <div class="container" data-aos="fade-up">
+        
+        <div class="glass-panel p-4 p-md-5" style="border-radius: 24px;">
+            <div class="row align-items-center">
+                
+                <div class="col-lg-5 mb-5 mb-lg-0 pe-lg-5">
+                    <h2 class="fw-bold display-6 mb-4">Let's <span class="text-primary">Connect</span></h2>
+                    <p class="text-white-50 fs-5 mb-5">
+                        Whether you have a question, a project proposition, or just want to say hi, I'll try my best to get back to you!
+                    </p>
+                    
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-4">
+                            <i class="fas fa-envelope text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-white-50 small mb-0">Email Me At</p>
+                            <h6 class="text-white fw-bold m-0">biswa.iter2024@gmail.com</h6>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-4">
+                            <i class="fas fa-map-marker-alt text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <p class="text-white-50 small mb-0">Location</p>
+                            <h6 class="text-white fw-bold m-0">Odisha, India</h6>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="bg-black bg-opacity-25 p-4 p-md-5 rounded-4 border border-secondary border-opacity-25">
+                        <form action="{% url 'contact:submit' %}" method="POST">
+                            {% csrf_token %}
+                            
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small fw-semibold">Your Name</label>
+                                    <input type="text" name="name" class="form-control bg-transparent text-white border-secondary" required placeholder="John Doe">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white-50 small fw-semibold">Your Email</label>
+                                    <input type="email" name="email" class="form-control bg-transparent text-white border-secondary" required placeholder="john@example.com">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white-50 small fw-semibold">Subject</label>
+                                    <input type="text" name="subject" class="form-control bg-transparent text-white border-secondary" required placeholder="Job Opportunity / Project Idea">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white-50 small fw-semibold">Message</label>
+                                    <textarea name="message" class="form-control bg-transparent text-white border-secondary" rows="5" required placeholder="Hello Dear..."></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 fw-bold shadow-sm transition-all hover-scale">
+                                        Send Message <i class="fas fa-paper-plane ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Premium input styling */
+    .form-control:focus {
+        background-color: transparent;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+        color: white;
+    }
+    .form-control::placeholder { color: rgba(255, 255, 255, 0.2); }
+    .hover-scale:hover { transform: scale(1.02); }
+</style>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        // 1. Initialize Premium Typing Effect
+        var typed = new Typed('#typed-text', {
+            strings: ['Software Engineer.', 'Tech Blogger.', 'VHDL & Java Developer.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+        
+        // 2. GSAP Animation (FIXED: Targeted to min-vh-100)
+        gsap.from(".min-vh-100 .glass-panel", {duration: 1, y: 50, opacity: 0, ease: "power3.out", delay: 0.2});
+        
+        // 3. Initialize 3D Tilt Effect for Skill Cards
+        VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+            max: 15,          
+            speed: 400,       
+            glare: true,      
+            "max-glare": 0.2, 
+        });
+    });
+</script>
+{% endblock %}

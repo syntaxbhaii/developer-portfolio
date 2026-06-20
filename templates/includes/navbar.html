@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease;">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-white fs-4" href="/">
+            Biswaaa
+            <span class="text-primary">.</span>
+        </a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white fs-3"></i>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#blog">Blog</a>
+                </li>
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                    <a href="#contact" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm">Let's Talk</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .hover-white { transition: color 0.3s ease; }
+    .hover-white:hover { color: #ffffff !important; }
+    /* Prevent content from hiding under the fixed navbar */
+    body { padding-top: 80px; } 
+</style>
