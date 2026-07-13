@@ -28,11 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key-for-dev')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS','developer-portfolio-1-f37x.onrender.com', '127.0.0.1,localhost').split(',')
-ALLOWED_HOSTS = [
-    'developer-portfolio-1-f37x.onrender.com', 
-    '127.0.0.1', 
-    'localhost'
-]
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
