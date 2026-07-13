@@ -1,82 +1,82 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Biswa sarathi subudhi, Software Engineer.">
-    <title>{% block title %}Biswa sarathi subudhi | Portfolio{% endblock %}</title>
+    <title>{% block title %}Biswa | Portfolio{% endblock %}</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --text-primary: #f8fafc;
-            --accent-color: #3b82f6;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
-        /* Glassmorphism utility class */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-        }
-    </style>
-    
-    {% block extra_css %}{% endblock %}
-</head>
-<body>
-
-    {% include 'includes/navbar.html' %}
-    {% if messages %}
-    <div class="position-fixed top-0 start-50 translate-middle-x mt-5 pt-4" style="z-index: 1050; width: 90%; max-width: 600px;">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags|default:'primary' }} alert-dismissible fade show glass-panel text-white border-0 shadow-lg" role="alert" style="background: rgba(59, 130, 246, 0.2);">
-            <i class="fas fa-check-circle me-2 text-primary"></i> {{ message }}
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    <main>
-    <main>
-        {% block content %}
-        {% endblock content %}
-    </main>
-
-    {% include 'includes/footer.html' %}
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#050505',
+                        midnight: '#0a0f1c',
+                        electricBlue: '#2563eb',
+                        cyanGlow: '#06b6d4',
+                        neonViolet: '#7c3aed',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    animation: {
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'float-fast': 'float 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
     </script>
 
+    <style>
+        body { background-color: #050505; color: #f8fafc; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
+        /* The Noise Overlay */
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 50; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Vercel/Linear-style Glass */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="relative min-h-screen bg-background selection:bg-neonViolet selection:text-white">
+    <div class="fixed top-[-10%] left-[-10%] w-96 h-96 bg-neonViolet rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-float-slow pointer-events-none z-0"></div>
+    <div class="fixed top-[20%] right-[-5%] w-[30rem] h-[30rem] bg-cyanGlow rounded-full mix-blend-screen filter blur-[128px] opacity-10 animate-float-fast pointer-events-none z-0" style="animation-delay: 2s;"></div>
+    <div class="bg-noise"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+        {% include 'includes/navbar.html' %}
+        <main class="flex-grow">
+            {% block content %}{% endblock content %}
+        </main>
+        {% include 'includes/footer.html' %}
+    </div>
+
+    <script type="module">
+        import { animate, stagger, inView } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+        window.animate = animate;
+        window.stagger = stagger;
+        window.inView = inView;
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

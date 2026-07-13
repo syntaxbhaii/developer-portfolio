@@ -1,10 +1,8 @@
-from django.shortcuts import render
-# Create your views here.
 from django.shortcuts import redirect
 from django.contrib import messages
-from .models import ContactMessage
 from django.http import JsonResponse
 from .models import ContactMessage
+
 def submit_contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -16,8 +14,9 @@ def submit_contact(request):
             name=name, email=email, subject=subject, message=message
         )
         
-        # Check if the request is an AJAX request from our JavaScript
+        # FIX: Check if the request is an AJAX request from our JavaScript
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            # We MUST return JSON here for the animation to trigger
             return JsonResponse({'status': 'success', 'message': 'Message sent!'})
             
         # Fallback for standard submission

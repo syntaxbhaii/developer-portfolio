@@ -1,42 +1,29 @@
-<nav class="navbar navbar-expand-lg fixed-top" style="background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease;">
-    <div class="container">
-        <a class="navbar-brand fw-bold text-white fs-4" href="/">
-            Biswaaa
-            <span class="text-primary">.</span>
+<nav class="fixed w-full top-0 z-50 transition-all duration-300 pt-6 px-6" id="premium-nav">
+    <div class="max-w-5xl mx-auto glass-panel rounded-full px-6 py-4 flex justify-between items-center bg-black/40">
+        <a href="/" class="text-xl font-bold tracking-tight text-white hover:opacity-80 transition-opacity">
+            Biswaaa<span class="text-cyanGlow">.</span>
         </a>
         
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white fs-3"></i>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#skills">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white-50 px-3 fw-semibold hover-white" href="#blog">Blog</a>
-                </li>
-                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                    <a href="#contact" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold shadow-sm">Let's Talk</a>
-                </li>
-            </ul>
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group">
+                About
+                <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-cyanGlow transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#skills" class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group">
+                Skills
+                <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-cyanGlow transition-all duration-300 group-hover:w-full"></span>
+            </a><a href="#experience" class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group">
+                Experience
+                <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-cyanGlow transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#projects" class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group">
+                Projects
+                <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-cyanGlow transition-all duration-300 group-hover:w-full"></span>
+            </a>
         </div>
+
+        <a href="#contact" class="hidden md:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-all duration-200 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+            Let's Talk
+        </a>
     </div>
 </nav>
-
-<style>
-    .hover-white { transition: color 0.3s ease; }
-    .hover-white:hover { color: #ffffff !important; }
-    /* Prevent content from hiding under the fixed navbar */
-    body { padding-top: 80px; } 
-</style>

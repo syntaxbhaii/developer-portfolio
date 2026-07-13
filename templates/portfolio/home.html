@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
+
+
+<style>
+    /* Defeat Browser Autofill White Background */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    textarea:-webkit-autofill:active {
+        /* Forces the text to stay white */
+        -webkit-text-fill-color: #ffffff !important;
+        /* Delays the browser's white background from applying for 5000 seconds */
+        transition: background-color 5000s ease-in-out 0s !important;
+    }
+</style>
+
+
 <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
     <div class="relative z-10 max-w-4xl mx-auto text-center mt-20">
         
@@ -24,14 +45,14 @@
             <a href="#projects" class="px-8 py-4 text-sm font-semibold text-white bg-white/10 border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] backdrop-blur-md flex items-center group">
                 Explore Work <i class="fas fa-arrow-right ml-2 opacity-70 group-hover:translate-x-1 transition-transform"></i>
             </a>
-            <a href="https://github.com/syntaxbhaii" target="_blank" rel="noopener noreferrer" class="px-8 py-4 text-sm font-medium text-gray-300 hover:text-white transition-all flex items-center group">
+            <a href="https://github.com/YOUR-GITHUB" target="_blank" rel="noopener noreferrer" class="px-8 py-4 text-sm font-medium text-gray-300 hover:text-white transition-all flex items-center group">
                 <i class="fab fa-github mr-2 text-lg group-hover:scale-110 group-hover:text-cyanGlow transition-all"></i> View GitHub
             </a>
         </div>
     </div>
 </section>
 
-<section id="about" class="scroll-section opacity-0 py-24 relative z-10">
+<section id="about" class="scroll-section py-24 relative z-10">
     <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
         
         <div class="w-full lg:w-1/2">
@@ -46,19 +67,19 @@
         <div class="w-full lg:w-1/2">
             <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">About <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-electricBlue">Me</span></h2>
             <p class="text-gray-400 leading-relaxed text-lg mb-6">
-                I am a highly motivated 2nd-year B.Tech student with a strong foundation in hardware description languages and object-oriented programming.
+                I am a highly motivated 3rd-year B.Tech student with a strong foundation in hardware description languages and object-oriented programming.
             </p>
             <p class="text-gray-400 leading-relaxed text-lg mb-10">
                 My focus lies in building efficient, scalable software and understanding the deep technical stack from VHDL circuit logic up to modern Django web applications. I thrive on solving complex problems and designing elegant, user-centric solutions.
             </p>
-            <a href="{% static '2nd Resume.pdf' %}" target="_blank" class="inline-flex items-center px-7 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
+            <a href="{% static 'sushree_resume.pdf' %}" target="_blank" class="inline-flex items-center px-7 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300 group">
                 Download Resume <i class="fas fa-download ml-3 text-cyanGlow group-hover:-translate-y-1 transition-transform"></i>
             </a>
         </div>
     </div>
 </section>
 
-<section id="skills" class="scroll-section opacity-0 py-24 relative z-10 bg-black/20 border-y border-white/5">
+<section id="skills" class="scroll-section py-24 relative z-10 bg-black/20 border-y border-white/5">
     <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">Technical <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-neonViolet">Arsenal</span></h2>
@@ -111,12 +132,63 @@
                 <i class="fab fa-github text-5xl text-white/80 mb-4 group-hover:scale-110 transition-transform"></i>
                 <h5 class="text-white font-semibold">GitHub</h5>
             </div>
-
         </div>
     </div>
 </section>
-
-<section id="projects" class="scroll-section opacity-0 py-24 relative z-10">
+<!-- EXPERIENCE / INTERNSHIPS SECTION -->
+<section id="experience" class="scroll-section py-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">Professional <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonViolet to-cyanGlow">Experiences</span></h2>
+            <p class="text-gray-400 text-lg">My industry roles and internships</p>
+        </div>
+        
+        <!-- The Vertical Timeline -->
+        <div class="relative border-l border-white/10 ml-3 md:ml-6 space-y-12">
+            
+            {% for internship in internships %}
+            <!-- ADDED: timeline-item -->
+            <div class="timeline-item relative pl-8 md:pl-12 group">
+                
+                <!-- Glowing Node (ADDED: timeline-dot and opacity-0) -->
+                <div class="timeline-dot opacity-0 absolute -left-[6px] top-8 w-3 h-3 rounded-full bg-cyanGlow shadow-[0_0_15px_rgba(6,182,212,0.8)] group-hover:scale-150 transition-transform duration-300"></div>
+                
+                <!-- Glass Content Card (ADDED: timeline-card and opacity-0) -->
+                <div class="timeline-card opacity-0 glass-panel p-8 rounded-[2rem] border border-white/5 group-hover:border-cyanGlow/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <div class="{% if internship.certificate %}md:col-span-2{% else %}md:col-span-3{% endif %}">
+                            {% if internship.duration %}
+                                <span class="text-cyanGlow text-xs font-bold tracking-wider uppercase mb-3 block">{{ internship.duration }}</span>
+                            {% endif %}
+                            <h4 class="text-2xl font-bold text-white mb-2">{{ internship.role }}</h4>
+                            <h5 class="text-lg text-gray-300 font-medium mb-4">{{ internship.company }}</h5>
+                            <p class="text-gray-400 leading-relaxed">{{ internship.description }}</p>
+                        </div>
+                        
+                        {% if internship.certificate %}
+                        <div class="md:col-span-1 relative">
+                            <div class="relative rounded-xl overflow-hidden border-2 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.5)] group/img cursor-pointer">
+                                <img src="{{ internship.certificate.url }}" alt="Certificate for {{ internship.company }}" class="w-full h-auto object-cover transform group-hover/img:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-black/20 group-hover/img:bg-transparent transition-colors duration-300"></div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Placeholder if no internships are added yet -->
+            <div class="text-gray-500 py-12 border border-dashed border-white/10 rounded-[2rem] bg-white/5 text-center ml-8">
+                <i class="fas fa-briefcase text-4xl mb-4 text-white/20"></i>
+                <h5 class="text-lg font-medium">Actively seeking internship opportunities.</h5>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+<section id="projects" class="scroll-section py-24 relative z-10">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-electricBlue to-cyanGlow">Work</span></h2>
@@ -170,7 +242,7 @@
     </div>
 </section>
 
-<section id="blog" class="scroll-section opacity-0 py-24 relative z-10 bg-black/20 border-y border-white/5">
+<section id="blog" class="scroll-section py-24 relative z-10 bg-black/20 border-y border-white/5">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">Tech <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonViolet to-electricBlue">Insights</span></h2>
@@ -213,7 +285,7 @@
     </div>
 </section>
 
-<section id="contact" class="scroll-section opacity-0 py-24 relative z-10">
+<section id="contact" class="scroll-section py-24 relative z-10">
     <div class="max-w-6xl mx-auto px-6">
         <div class="glass-panel p-8 md:p-12 rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden">
             
@@ -250,8 +322,9 @@
                 </div>
                 
                 <div class="lg:col-span-3">
-                    <div class="bg-black/40 p-8 rounded-[2rem] border border-white/5">
-                        <form action="{% url 'contact:submit' %}" method="POST" class="space-y-6" id="contact-form">
+                    <div class="bg-black/40 p-8 rounded-[2rem] border border-white/5 relative overflow-hidden">
+                        
+                        <form id="contact-form" action="{% url 'contact:submit' %}" method="POST" class="space-y-6 relative z-10">
                             {% csrf_token %}
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -272,28 +345,23 @@
                             
                             <div>
                                 <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Message</label>
-                                <textarea name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyanGlow focus:ring-1 focus:ring-cyanGlow transition-all resize-none" placeholder="Heyyyy..."></textarea>
+                                <textarea name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyanGlow focus:ring-1 focus:ring-cyanGlow transition-all resize-none" placeholder="Heyyy..."></textarea>
                             </div>
                             
                             <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-electricBlue to-cyanGlow text-[#0a0f1c] font-bold text-lg hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-all duration-300 hover:-translate-y-1">
                                 Send Message <i class="fas fa-paper-plane ml-2"></i>
                             </button>
                         </form>
-                        <div class="bg-black/40 p-8 rounded-[2rem] border border-white/5 relative overflow-hidden">
-    
-                            <form id="contact-form" action="{% url 'contact:submit' %}" method="POST" class="space-y-6">
-                            </form>
 
-                            <div id="success-state" class="hidden flex-col items-center justify-center py-12 absolute inset-0 bg-black/90 backdrop-blur-sm z-20">
-                                <div class="relative w-24 h-24 mb-4">
-                                    <i id="flying-plane" class="fas fa-paper-plane text-5xl text-electricBlue absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
-                                    <i id="success-check" class="fas fa-check-circle text-6xl text-cyanGlow absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50"></i>
-                                </div>
-                                <h3 id="success-text" class="text-2xl font-bold text-white mb-2 opacity-0">Message Sent!</h3>
-                                    <p id="success-subtext" class="text-gray-400 opacity-0 text-center px-6">I'll get back to you as soon as possible.</p>
+                        <div id="success-state" class="hidden flex-col items-center justify-center py-12 absolute inset-0 bg-[#0a0f1c]/95 backdrop-blur-md z-20 rounded-[2rem]">
+                            <div class="relative w-24 h-24 mb-4">
+                                <i id="flying-plane" class="fas fa-paper-plane text-5xl text-electricBlue absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></i>
+                                <i id="success-check" class="fas fa-check-circle text-6xl text-cyanGlow absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50"></i>
                             </div>
-    
+                            <h3 id="success-text" class="text-2xl font-bold text-white mb-2 opacity-0">Message Sent!</h3>
+                            <p id="success-subtext" class="text-gray-400 opacity-0 text-center px-6">I'll get back to you as soon as possible.</p>
                         </div>
+
                     </div>
                 </div>
                 
@@ -305,7 +373,7 @@
 
 {% block extra_js %}
 <script type="module">
-    // 1. Hero Reveal (Runs immediately on load)
+    // 1. Hero Reveal
     setTimeout(() => {
         window.animate(
             ".hero-element", 
@@ -314,87 +382,152 @@
         );
     }, 100);
 
-    // 2. Advanced Premium Scroll Animations (Staggered Reveal)
+    // 2. Advanced Premium Scroll Animations
     const sections = document.querySelectorAll('.scroll-section');
-    
-    // Remove the hardcoded opacity from the main section so we can animate the pieces inside it
-    sections.forEach(sec => sec.classList.remove('opacity-0'));
-
     sections.forEach((section) => {
-        // Target all the beautiful elements inside this specific section
-        const elements = section.querySelectorAll('h2, p, .glass-panel, a.inline-flex, form');
+        const elements = section.querySelectorAll('h2, p, .glass-panel:not(.timeline-card), a.inline-flex, form');
         
-        // Hide them initially so they are ready to animate
         elements.forEach(el => {
             el.style.opacity = '0';
         });
 
-        // When the user scrolls this section into the sweet spot of the screen...
+        // Triggering precisely as it comes into view
         window.inView(section, () => {
-            // Animate them in sequentially with a blur and lift effect!
             window.animate(
                 elements,
                 { y: [40, 0], opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] },
                 { duration: 0.9, delay: window.stagger(0.15), easing: [0.22, 1, 0.36, 1] }
             );
-        }, { margin: "-20% 0px -20% 0px" }); 
+        }); 
     });
-    // 3. Telegram-Style Contact Form Animation
+
+    // 3. Telegram-Style Contact Form Animation (With Auto-Reset)
     const contactForm = document.getElementById('contact-form');
     const successState = document.getElementById('success-state');
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.innerHTML;
+    
+    if (contactForm) {
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // STOP the jarring page reload/scroll jump!
-        
-        // Show loading state on button
-        submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
-        submitBtn.disabled = true;
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
+            submitBtn.disabled = true;
 
-        const formData = new FormData(this);
+            const formData = new FormData(this);
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-        // Send data to Django in the background
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.status === 'success') {
-                // Fade out the form
-                window.animate(contactForm, { opacity: 0, scale: 0.95 }, { duration: 0.3 })
-                .finished.then(() => {
-                    contactForm.style.display = 'none';
-                    successState.classList.remove('hidden');
-                    successState.classList.add('flex');
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': csrfToken 
+                }
+            })
+            .then(response => {
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    return response.json();
+                } else {
+                    throw new Error("Backend did not return JSON. Check views.py!");
+                }
+            })
+            .then(data => {
+                if(data && data.status === 'success') {
+                    window.animate(contactForm, { opacity: 0 }, { duration: 0.3 })
+                    .then(() => {
+                        contactForm.style.pointerEvents = 'none'; 
+                        
+                        successState.classList.remove('hidden');
+                        successState.classList.add('flex');
+                        successState.style.opacity = '1';
 
-                    // 1. The Telegram Paper Plane Fly-Off
-                    window.animate("#flying-plane", 
-                        { 
-                            x: [0, 300], 
-                            y: [0, -300], 
-                            scale: [1, 0.5], 
-                            rotate: [0, 15],
-                            opacity: [1, 0] 
-                        }, 
-                        { duration: 1.2, easing: [0.22, 1, 0.36, 1] }
-                    ).finished.then(() => {
-                        // 2. Pop in the Success Checkmark
-                        window.animate("#success-check", 
-                            { opacity: [0, 1], scale: [0.5, 1] }, 
-                            { duration: 0.5, easing: "spring" }
-                        );
-                        // 3. Fade in the text
-                        window.animate(["#success-text", "#success-subtext"], 
-                            { opacity: [0, 1], y: [20, 0] }, 
-                            { duration: 0.6, delay: window.stagger(0.15) }
-                        );
+                        // 1. The Telegram Paper Plane Fly-Off
+                        window.animate("#flying-plane", 
+                            { 
+                                x: [0, 300], 
+                                y: [0, -300], 
+                                scale: [1, 0.5], 
+                                rotate: [0, 15],
+                                opacity: [1, 0] 
+                            }, 
+                            { duration: 1.2, easing: [0.22, 1, 0.36, 1] }
+                        ).then(() => {
+                            // 2. Pop in the Success Checkmark
+                            window.animate("#success-check", 
+                                { opacity: [0, 1], scale: [0.5, 1] }, 
+                                { duration: 0.5, easing: "spring" }
+                            );
+                            
+                            // 3. Fade in the text (FIXED: Combined into a single string)
+                            window.animate("#success-text, #success-subtext", 
+                                { opacity: [0, 1], y: [20, 0] }, 
+                                { duration: 0.6, delay: window.stagger(0.15) }
+                            ).then(() => {
+                                
+                                // Wait 2.5 seconds, then reset the form
+                                setTimeout(() => {
+                                    window.animate(successState, { opacity: 0 }, { duration: 0.5 })
+                                    .then(() => {
+                                        successState.classList.add('hidden');
+                                        successState.classList.remove('flex');
+                                        
+                                        // Reset the physical form fields
+                                        contactForm.reset();
+                                        submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+                                        submitBtn.disabled = false;
+                                        
+                                        // Reset the plane and checkmark positions for the next time
+                                        document.querySelector("#flying-plane").style = "";
+                                        document.querySelector("#success-check").style = "opacity: 0; transform: translate(-50%, -50%) scale(0.5);";
+                                        document.querySelector("#success-text").style = "opacity: 0;";
+                                        document.querySelector("#success-subtext").style = "opacity: 0;";
+
+                                        // Fade the blank form back in
+                                        contactForm.style.pointerEvents = 'auto';
+                                        window.animate(contactForm, { opacity: 1 }, { duration: 0.5 });
+                                    });
+                                }, 2500);
+                                
+                            });
+                        });
                     });
-                });
-            }
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Something went wrong! Make sure contact/views.py is updated.");
+                submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+                submitBtn.disabled = false;
+            });
         });
+    }
+
+    // 4. Custom Timeline Sequence (Bulletproof Version)
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    timelineItems.forEach((item) => {
+        const dot = item.querySelector('.timeline-dot');
+        const card = item.querySelector('.timeline-card');
+        
+        window.inView(item, () => {
+            // 1. Pop the dot immediately
+            if (dot) {
+                window.animate(dot, 
+                    { scale: [0, 1], opacity: [0, 1] }, 
+                    { duration: 0.5, easing: "spring" }
+                );
+            }
+            
+            // 2. Slide the card in with a slight delay (0.2s)
+            if (card) {
+                window.animate(card, 
+                    { x: [50, 0], opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] }, 
+                    { duration: 0.8, delay: 0.2, easing: [0.22, 1, 0.36, 1] }
+                );
+            }
+        }); 
     });
 </script>
 {% endblock %}
